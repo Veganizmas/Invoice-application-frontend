@@ -12,6 +12,7 @@ const AddItem = () => {
     const [bazineKaina, setBazineKaina] = useState('');
     const navigate = useNavigate();
     const {id} = useParams();
+    const [isToggled, setIsToggled] = useState(true);
 
     const saveItem = (e) => {
         e.preventDefault();
