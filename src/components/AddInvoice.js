@@ -18,6 +18,14 @@ const AddInvoice = () => {
     const [customerId, setCustomers] = useState([]);
     const [items, setItems] = useState([]);
 
+    const filteredCustomerList = customer.filter((product) => {
+        return product.klientoStatusas === 'Aktyvus';
+      });
+    
+    const filteredItemList = items.filter((product) => {
+          return product.statusas === 'Aktyvus';
+    });
+
     const init = () => {
         customerService
             .getAll()
@@ -121,7 +129,7 @@ const AddInvoice = () => {
                 <div className="form-group">
                     <Select     
                         value={customerId}             
-                        options={customer}
+                        options={filteredCustomerList}
                         getOptionLabel = {a => a.vardas + " " + a.pavarde}
                         getOptionValue={a => a}  
                         className=" col-4"
@@ -149,7 +157,7 @@ const AddInvoice = () => {
                                 <Select 
                                     className="col-4"
                                     name="item"
-                                    options={items}
+                                    options={filteredItemList}
                                     getOptionLabel = {a => a.pavadinimas}
                                     getOptionValue = {a => a}
                                     value={element.item}

@@ -12,7 +12,6 @@ const AddItem = () => {
     const [bazineKaina, setBazineKaina] = useState('');
     const navigate = useNavigate();
     const {id} = useParams();
-    const [isToggled, setIsToggled] = useState(true);
 
     const saveItem = (e) => {
         e.preventDefault();
@@ -37,6 +36,9 @@ const AddItem = () => {
                     console.log('Something went wrong', error);
                 })}  
         }
+    
+    
+
 
     useEffect(() => {
         if (id) {
@@ -104,15 +106,11 @@ const AddItem = () => {
                     /> 
                 </div>
 
-                <div className="form-group">
-                    <input
-                       type="text"
-                       className="form-control col-4"
-                       id="statusas"
-                       value={statusas}
-                       onChange={(e) => setItemStatus(e.target.value)}
-                       placeholder="įveskite statusą"
-                    />
+                <div className="form-group ">
+                    <select className="form-control col-4" onChange={(e) => setItemStatus(e.target.value)}>
+                        <option value="Aktyvus">Aktyvus</option>
+                        <option value="Neaktyvus">Neaktyvus</option>
+                    </select>
                 </div>
 
                 <div className="form-group">
